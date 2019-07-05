@@ -1,0 +1,31 @@
+$gray: #f4f4f4;
+$litegray: #cccccc;
+$orange : #FF9E48;
+
+.card {
+  position: relative;
+  background-color: bisque;
+  .image-box {
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex__center{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.verticalCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
