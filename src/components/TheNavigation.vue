@@ -36,7 +36,7 @@ export default {
   // height:100px;
   top: 0px;
   padding: 18px 14px;
-  width: 100%;
+  width: calc(100% - 28px);
   &-Back {
     width: 28px;
     position: absolute;
