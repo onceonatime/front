@@ -3,6 +3,14 @@
     <div class="Navigation-Back">
       <img @click="backRouter" class="Navigation-Icon" :src="backIcon" alt />
     </div>
+    <div class="Navigation-Home">
+      <img
+        @click="pushMain"
+        class="Navigation-Icon"
+        src="https://image.flaticon.com/icons/svg/25/25694.svg"
+        alt
+      />
+    </div>
     <div class="Navigation-Head">{{head}}</div>
   </div>
 </template>
@@ -22,6 +30,9 @@ export default {
   methods: {
     backRouter() {
       this.$router.back();
+    },
+    pushMain() {
+      this.$router.push({ name: "main" });
     }
   }
 };
@@ -33,13 +44,18 @@ export default {
   background-color: $background-color;
   color: #707070;
   position: fixed;
-  // height:100px;
+  border-bottom: 1px solid #61616142;
   top: 0px;
-  padding: 18px 14px;
+  padding: 17.5px 14px;
   width: calc(100% - 28px);
   &-Back {
     width: 28px;
     position: absolute;
+  }
+  &-Home {
+    width: 28px;
+    position: absolute;
+    right: 15px;
   }
   &-Icon {
     width: 100%;

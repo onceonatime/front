@@ -14,15 +14,17 @@ import 'vue-glide-js/dist/vue-glide.css'
 Vue.use(VueGlide)
 
 import {
-  Select
+  Select, Option
 } from 'element-ui';
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
+import '@/assets/css/index.scss'
 // configure language
 locale.use(lang)
 
 // import components
 Vue.component(Select.name, Select)
+Vue.component(Option.name, Option)
 
 import VModal from 'vue-js-modal'
 Vue.use(VModal, {

@@ -1,8 +1,13 @@
 $background-color: rgb(233, 233, 233);
 $litegray: #cccccc;
 $darkgray: #c8c8c8;
-$litedark:#494949;
+$litedark: #494949;
 $orange: #ff9e48;
+$--color-primary: #ff9e48;
+
+// /* icon font path, required */
+$--font-path: "~element-ui/lib/theme-chalk/fonts";
+// @import "~element-ui/packages/theme-chalk/src/index";
 
 .card {
   position: relative;

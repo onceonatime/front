@@ -1,17 +1,40 @@
 <template>
   <div class="Site">
     <div class="Site-Main">
-      <!-- <div class="Site-Search">
-        <div style="paddingLeft:5px;gridColumn:1/9">옛적의</div>
-        <the-select style="zIndex:3;gridColumn:9/22" :options="cities"></the-select>
-        <the-select style="gridColumn:1/17" :options="cities"></the-select>
-        <div>을</div>
-      </div> -->
       <div class="Site-Search">
-        <el-select></el-select>
-        <el-select></el-select>
+        <span style="gridColumn:2/8;">옛적의</span>
+        <el-select
+          style="left:5px;marginRight:5px;gridColumn:8/24;"
+          v-model="cityValue"
+          placeholder="시/도"
+          autocomplete
+          filterable
+        >
+          <el-option
+            class="Site-Option"
+            v-for="(city,index) in cities"
+            :key="'city'+index"
+            :label="city"
+            :value="city"
+          ></el-option>
+        </el-select>
+        <el-select
+          style="left:5px;marginRight:5px;gridColumn:1/16;"
+          v-model="cityValue"
+          placeholder="시/도"
+          autocomplete
+        >
+          <el-option
+            class="Site-Option"
+            v-for="(city,index) in cities"
+            :key="'city'+index"
+            :label="city"
+            :value="city"
+          ></el-option>
+        </el-select>
+        <span style="gridColumn:17/19;">을</span>
+        <the-button class="Site-Button" style="gridColumn:14/23;">둘러보기</the-button>
       </div>
-      <the-button class="Site-Button">둘러보기</the-button>
     </div>
   </div>
 </template>
@@ -22,6 +45,8 @@ import TheButton from "@/components/TheButton";
 export default {
   data() {
     return {
+      cityValue: "",
+      cityIndex: 0,
       cities: ["강북구", "강남구", "성북구", "성동구", "서대문구"]
     };
   },
@@ -32,36 +57,35 @@ export default {
 };
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 @import "@/assets/css/index.scss";
-.search {
-  &-select {
-    background-color: #ffffff;
-    border: none;
-  }
-  &-option {
-    font-weight: 500;
-    font-size: 100%;
-  }
-}
 .Site {
   background-color: $background-color;
   height: 100%;
   position: relative;
   &-Search {
-    font-size: 37px;
-    font-weight: 500;
     display: grid;
+    max-width: 350px;
+    padding-top: 100px;
+    font-size: 28px;
+    font-weight: 500;
+    color: $litedark;
+
     grid-template-columns: repeat(24, 1fr);
-    grid-gap: 14px 18px;
-    width: 95%;
-    margin: auto;
-    padding-top: 40%;
+    grid-row-gap: 12px;
   }
   &-Button {
-    position: absolute;
-    top: 50%;
-    right: 50px;
+    text-align: center;
+    top: 35px;
+    position: relative;
+  }
+}
+.el-input {
+  font-size: 28px;
+  font-weight: 500;
+  color: $litedark;
+  &__inner {
+    height: 43px;
   }
 }
 </style>
