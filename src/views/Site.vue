@@ -1,6 +1,6 @@
 <template>
   <div class="Site">
-    <div class="Site-Main">
+    <!-- <div class="Site-Main">
       <div class="Site-Search">
         <div style="paddingLeft:5px;gridColumn:1/9">옛적의</div>
         <the-select style="zIndex:3;gridColumn:9/22" :options="cities"></the-select>
@@ -8,7 +8,7 @@
         <div>을</div>
       </div>
       <the-button class="Site-Button">둘러보기</the-button>
-    </div>
+    </div> -->
   </div>
 </template>
 
