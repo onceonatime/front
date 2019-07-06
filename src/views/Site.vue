@@ -8,7 +8,8 @@
         <div>을</div>
       </div> -->
       <div class="Site-Search">
-        
+        <el-select></el-select>
+        <el-select></el-select>
       </div>
       <the-button class="Site-Button">둘러보기</the-button>
     </div>

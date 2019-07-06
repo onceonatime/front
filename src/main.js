@@ -16,7 +16,13 @@ Vue.use(VueGlide)
 import {
   Select
 } from 'element-ui';
-Vue.use(Select)
+import lang from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale'
+// configure language
+locale.use(lang)
+
+// import components
+Vue.component(Select.name, Select)
 
 import VModal from 'vue-js-modal'
 Vue.use(VModal, {
