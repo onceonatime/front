@@ -74,7 +74,13 @@ export default new Router({
             store.commit(STORE.mutations.SET_HEAD, '둘러보기')
             next()
           }
-        }, {
+        },
+        {
+          path: '/detail',
+          name: 'detail_guard',
+          component: Main,
+        },
+        {
           path: '/detail/:id',
           name: 'detail',
           component: Detail,
@@ -82,6 +88,7 @@ export default new Router({
             id: route.params.id
           }),
           beforeEnter(to, from, next) {
+            console.log(from);
             store.commit(STORE.mutations.SET_HEAD, '상세 정보')
             next()
           }

@@ -1,11 +1,18 @@
 <template>
   <div class="TheSelect">
-    <div class="TheSelect-Head" :class="headClass" @click="toggleVisible">
+    <div class="TheSelect-Head" ref="head-button" @click="onOpen" tabindex="1">
       {{options[index]}}
       <img class="TheSelect-Head-Arrow" src="@/assets/icon/down_arrow.png" />
     </div>
-    <div class="TheSelect-Menu" :class="menuClass">
-      <div class="TheSelect-Option" v-for="(item, index) in options" :key="'select'+index">{{item}}</div>
+    <div
+      class="TheSelect-Menu"
+      v-if="showMenu"
+      v-closable="{
+        exclude: ['head-button'],
+        handler: 'onClose'
+      }"
+    >
+      <div class="TheSelect-Option" v-for="(item, index) in options" :key="'select'+index" @click="onSelect(index)">{{item}}</div>
     </div>
   </div>
 </template>
@@ -17,20 +24,20 @@ export default {
     return {
       index: 0,
       isVisible: false,
-      menuClass: "",
-      headClass: ""
+      showMenu: false
     };
   },
   methods: {
-    toggleVisible() {
-      if (this.isVisible) {
-        this.menuClass = "";
-        this.headClass = "";
-      } else {
-        this.menuClass = "visible";
-        this.headClass = "head-visible";
-      }
-      this.isVisible = !this.isVisible;
+    onOpen() {
+      this.showMenu = true;
+    },
+    onClose() {
+      this.showMenu = false;
+    },
+    onSelect(index){
+      console.log(index);
+      this.showMenu = false;
+      this.index = index;
     }
   }
 };
@@ -52,7 +59,10 @@ export default {
     box-sizing: border-box;
     // background-color: white;
     background-color: #fff;
-
+    &:focus {
+      outline: none;
+      border: 2px solid $orange;
+    }
     &-Arrow {
       position: absolute;
       right: 0px;
@@ -64,13 +74,13 @@ export default {
     width: 100%;
     transition: ease-in-out 0.28s, z-index 0s;
     height: 250px;
-    transform: translateY(0);
+    transform: translateY(54px);
     overflow-y: scroll;
     overflow-x: hidden;
     border-radius: 10px;
-    opacity: 0;
+    // opacity: 0;
     background-color: #fff;
-    pointer-events: none;
+    // pointer-events: none;
   }
 
   &-Option {
@@ -80,6 +90,12 @@ export default {
     pointer-events: none;
   }
 }
+
+// .TheSelect-Head:focus + .TheSelect-Menu{
+//   visibility: visible;
+//   transform: translateY(55px);
+//   opacity: 1;
+// }
 .head-visible {
   border: 1.5px solid $orange;
 }

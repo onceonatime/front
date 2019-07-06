@@ -30,13 +30,13 @@ export default {
 <style lang='scss' scoped>
 @import "@/assets/css/index.scss";
 .Navigation {
-  background-color: #f4f4f4;
+  background-color: $background-color;
   color: #707070;
   position: fixed;
   // height:100px;
   top: 0px;
   padding: 18px 14px;
-  width: calc(100% - 28px);
+  width: calc(100% - 30px);
   &-Back {
     width: 28px;
     position: absolute;

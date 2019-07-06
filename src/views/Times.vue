@@ -43,7 +43,7 @@ export default {
 <style lang='scss' scoped>
 @import "@/assets/css/index.scss";
 .Times {
-  background-color: $gray;
+  background-color: $background-color;
   height: 100%;
   overflow: scroll;
 }

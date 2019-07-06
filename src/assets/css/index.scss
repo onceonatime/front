@@ -1,6 +1,8 @@
-$gray: #f4f4f4;
+$background-color: rgb(233, 233, 233);
 $litegray: #cccccc;
-$orange : #FF9E48;
+$darkgray: #c8c8c8;
+$litedark:#494949;
+$orange: #ff9e48;
 
 .card {
   position: relative;
@@ -17,8 +19,8 @@ $orange : #FF9E48;
   display: flex;
 }
 
-.flex__center{
-  display:flex;
+.flex__center {
+  display: flex;
   justify-content: center;
   align-items: center;
 }

@@ -41,7 +41,7 @@ export default {
   }
 }
 .Site {
-  background-color: $gray;
+  background-color: $background-color;
   height: 100%;
   position: relative;
   &-Search {

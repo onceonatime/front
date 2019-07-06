@@ -56,7 +56,6 @@ export default {
     glide.mount();
     glide.on("run", res => {
       this.slideIndex = glide.index;
-      console.log(this.slideIndex);
     });
   }
 };

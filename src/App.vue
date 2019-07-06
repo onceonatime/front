@@ -25,8 +25,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic&display=swap');
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  // font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100%;
@@ -35,6 +37,7 @@ export default {
   max-width: 800px;
   position: relative;
 }
+
 html,
 body {
   margin: 0;
