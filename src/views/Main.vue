@@ -1,10 +1,7 @@
 <template>
   <div class="Main">
-    <div class="Main-Banner card">
-      <div class="image-box">
-        <img :src="banner" alt />
-      </div>
-      <div class="text-box"></div>
+    <div class="Main-Banner" :style="{backgroundImage:`url('${banner}')`}">
+      <img class="Main-Logo" :src="logo" alt />
     </div>
     <div class="Main-Infor">검색할 방법을 선택해주세요.</div>
     <div class="Main-Button">
@@ -17,7 +14,7 @@
       <div class="verticalLine"></div>
       <div class="Main-ButtonItem">
         <div class="verticalCenter" @click="pushRouter('times')">
-          <img class="Main-ButtonIcon" :src="site_icon" alt />
+          <img class="Main-ButtonIcon" :src="timeline_icon" alt />
           <div class="Main-ButtonText">시대</div>
         </div>
       </div>
@@ -29,10 +26,10 @@
 export default {
   data() {
     return {
-      banner:
-        "https://file.namu.moe/file/8bc9e381797334eb33da66e3ba501be171a8566d8f565cf8f62b2ea46f179bbc2564f40b02b67d3fba71c91da46b5ea2c2465ef3241edd88ee22a66af3bd00e6688fa0de7429385f1be259890f349ea5",
-      site_icon:
-        "https://st2.depositphotos.com/8065014/11370/v/950/depositphotos_113707614-stock-illustration-location-icon-vector-sign.jpg"
+      banner: require("@/assets/image/배너.png"),
+      logo: require("@/assets/image/Logo.png"),
+      site_icon: require("@/assets/icon/위치.png"),
+      timeline_icon: require("@/assets/icon/타임라인.png")
     };
   },
   methods: {
@@ -56,6 +53,15 @@ export default {
   height: 100%;
   &-Banner {
     height: 65%;
+    background-repeat: no-repeat;
+    background-position: 30% 100%;
+  }
+  &-Logo {
+    width: 120px;
+    position: relative;
+    top: 95px;
+    left:39%;
+    margin: auto;
   }
   &-Infor {
     color: $litegray;
@@ -71,9 +77,6 @@ export default {
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-    &Icon {
-      width: 50px;
     }
   }
 }
