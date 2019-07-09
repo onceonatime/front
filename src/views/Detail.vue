@@ -21,7 +21,7 @@
       <div class="Detail-HeadName">{{data.name}}</div>
       <div class="Detail-HeadAddress">{{data.address}}</div>
     </div>
-    <div class="Detail-Desc content">{{data.desc}}</div>
+    <div class="Detail-Desc">{{data.desc}}</div>
   </div>
 </template>
 
@@ -83,7 +83,7 @@ export default {
       color: white;
     }
     &-Text {
-      font-size:16px;
+      font-size: 16px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -112,9 +112,18 @@ export default {
     }
   }
   &-Desc {
-    margin-top: 27px;
     height: calc(100% - 430px);
-    overflow: scroll;
+    overflow-y: scroll;
+    width:85%;
+    margin:auto;
+    margin-top: 27px;
+    &::-webkit-scrollbar {
+      width:2px;
+      background-color: rgba(121, 121, 121, 0.383);
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #ff9d48a1;
+    }
   }
 }
 </style>

@@ -59,8 +59,9 @@ export default {
   &-Logo {
     width: 120px;
     position: relative;
-    top: 95px;
-    left:39%;
+    // top: 95px;
+    top:17%;
+    left: 35%;
     margin: auto;
   }
   &-Infor {

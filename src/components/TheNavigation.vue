@@ -7,7 +7,8 @@
       <img
         @click="pushMain"
         class="Navigation-Icon"
-        src="https://image.flaticon.com/icons/svg/25/25694.svg"
+        style="width:32px;"
+        :src="homeIcon"
         alt
       />
     </div>
@@ -19,7 +20,8 @@
 export default {
   data() {
     return {
-      backIcon: require("@/assets/icon/back_arrow.png")
+      backIcon: require("@/assets/icon/back_arrow.png"),
+      homeIcon: require("@/assets/icon/home.png")
     };
   },
   computed: {
@@ -48,6 +50,7 @@ export default {
   top: 0px;
   padding: 17.5px 14px;
   width: calc(100% - 28px);
+  max-width: 772px;
   &-Back {
     width: 28px;
     position: absolute;

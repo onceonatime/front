@@ -18,6 +18,8 @@ export default {
   top: 65px;
   height: calc(100% - 65px);
   &-Main {
+    // margin: auto;
+    // max-width: 800px;
     position: relative;
     height: 100%;
   }

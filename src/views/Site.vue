@@ -12,24 +12,25 @@
         >
           <el-option
             class="Site-Option"
-            v-for="(city,index) in cities"
+            v-for="(city,index) in data"
             :key="'city'+index"
-            :label="city"
-            :value="city"
+            :label="city.city_name"
+            :value="index"
           ></el-option>
         </el-select>
         <el-select
           style="left:5px;marginRight:5px;gridColumn:1/16;"
-          v-model="cityValue"
-          placeholder="시/도"
+          v-model="townValue"
+          placeholder="군/구"
           autocomplete
+          filterable
         >
           <el-option
             class="Site-Option"
-            v-for="(city,index) in cities"
-            :key="'city'+index"
-            :label="city"
-            :value="city"
+            v-for="(town,index) in towns"
+            :key="'town'+index"
+            :label="town.name"
+            :value="index"
           ></el-option>
         </el-select>
         <span style="gridColumn:17/19;">을</span>
@@ -40,18 +41,26 @@
 </template>
 
 <script>
-import TheSelect from "@/components/TheSelect";
 import TheButton from "@/components/TheButton";
+import dataset from "../site_dataset";
 export default {
   data() {
     return {
-      cityValue: "",
-      cityIndex: 0,
-      cities: ["강북구", "강남구", "성북구", "성동구", "서대문구"]
+      cityValue: null,
+      townValue: null,
+      data: dataset
     };
   },
+  computed: {
+    towns() {
+      if (this.cityValue !== null) {
+        return this.data[this.cityValue].twon;
+      } else {
+        return [];
+      }
+    }
+  },
   components: {
-    "the-select": TheSelect,
     "the-button": TheButton
   }
 };
@@ -67,10 +76,10 @@ export default {
     display: grid;
     max-width: 350px;
     padding-top: 100px;
+    padding-left: 2%;
     font-size: 28px;
     font-weight: 500;
     color: $litedark;
-
     grid-template-columns: repeat(24, 1fr);
     grid-row-gap: 12px;
   }

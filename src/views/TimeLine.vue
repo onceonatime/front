@@ -21,6 +21,9 @@
         </li>
       </ol>
     </div>
+    <div class="TimeLine-All">
+      <img :src="allIcon" alt />
+    </div>
   </div>
 </template>
 
@@ -31,7 +34,8 @@ export default {
   props: ["age"],
   data() {
     return {
-      data: timeset.data
+      data: timeset.data,
+      allIcon: require("@/assets/icon/all.png")
     };
   }
 };
@@ -40,6 +44,7 @@ export default {
 <style lang='scss' scoped>
 @import "@/assets/css/index.scss";
 .TimeLine {
+  position: relative;
   background-color: $background-color;
   overflow: scroll;
   scroll-behavior: smooth;
@@ -118,6 +123,11 @@ export default {
         text-overflow: ellipsis;
       }
     }
+  }
+  &-All{
+    position:fixed;
+    top:55%;
+    right:3%;
   }
 }
 .backHas {
