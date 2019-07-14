@@ -37,6 +37,9 @@
         <the-button class="Site-Button" style="gridColumn:14/23;" @click.native="searhSite">둘러보기</the-button>
       </div>
     </div>
+    <div class="the-spinner" v-if="isLoading">
+      <div class="the-spinner-core"></div>
+    </div>
   </div>
 </template>
 
@@ -51,6 +54,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       cityValue: null,
       townValue: null,
       data: dataset
@@ -77,18 +81,41 @@ export default {
         alert("값을 입력하세요");
         return null;
       }
-      this.$store
-        .dispatch(STORE.actions.FETCH_MARKERS_AND_GO_MAP, {
-          city: this.getCityName,
-          town: this.getTownName
-        })
+      this.isLoading = true;
+      this.$store.dispatch(STORE.actions.FETCH_MARKERS_AND_GO_MAP, {
+        city: this.getCityName,
+        town: this.getTownName
+      });
     }
+  },
+  mounted() {
+    // this.$modal.show("site-spinner");
   }
 };
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 @import "@/assets/css/index.scss";
+.the-spinner {
+  background-color: rgba(104, 104, 104, 0.452);
+  position: fixed;
+  top:0;
+  height: 100%;
+  width: 100%;
+  &-core {
+    margin: 0px auto;
+    margin-top:70%;
+    border-radius: 100%;
+    border-width: 3px;
+    border-style: solid;
+    border-color: $orange rgb(238, 238, 238) rgb(238, 238, 238);
+    border-image: initial;
+    width: 48px;
+    height: 48px;
+    animation: vue-simple-spinner-spin 0.8s linear 0s infinite normal none
+      running;
+  }
+}
 .Site {
   background-color: $background-color;
   height: 100%;

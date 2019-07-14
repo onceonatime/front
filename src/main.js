@@ -18,7 +18,8 @@ import 'vue-glide-js/dist/vue-glide.css'
 Vue.use(VueGlide)
 
 import {
-  Select, Option
+  Select,
+  Option
 } from 'element-ui';
 import lang from 'element-ui/lib/locale/lang/en'
 import locale from 'element-ui/lib/locale'
@@ -38,7 +39,10 @@ Vue.use(VModal, {
 import TheNavigation from './components/TheNavigation.vue'
 Vue.component('the-navigation', TheNavigation)
 
-
+import VueDaumPostcode from "vue-daum-postcode"
+Vue.use(VueDaumPostcode, {
+  name: "vue-daum-postcode"
+})
 
 new Vue({
   router,

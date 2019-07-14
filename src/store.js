@@ -38,6 +38,15 @@ export default new Vuex.Store({
           commit('setMarker', res.data)
         })
     },
+    fetcheMarkersWithCoordinate({
+      commit
+    }, payload) {
+      axios.get(`${API}/coordinate/`, {
+        params: payload
+      }).then(res => {
+        commit('setMarker', res.data)
+      })
+    },
     [STORE.actions.FETCH_MARKERS_AND_GO_MAP]: ({
       commit
     }, payload) => {
@@ -51,5 +60,6 @@ export default new Vuex.Store({
           });
         })
     },
+
   }
 })
