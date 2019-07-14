@@ -34,7 +34,7 @@
           ></el-option>
         </el-select>
         <span style="gridColumn:17/19;">을</span>
-        <the-button class="Site-Button" style="gridColumn:14/23;">둘러보기</the-button>
+        <the-button class="Site-Button" style="gridColumn:14/23;" @click.native="searhSite">둘러보기</the-button>
       </div>
     </div>
   </div>
@@ -42,8 +42,13 @@
 
 <script>
 import TheButton from "@/components/TheButton";
-import dataset from "../site_dataset";
+import dataset from "@/assets/data.js/site_dataset";
+import { STORE } from "../assets/data.js/Constant.js";
+import axios from "axios";
 export default {
+  components: {
+    "the-button": TheButton
+  },
   data() {
     return {
       cityValue: null,
@@ -58,10 +63,26 @@ export default {
       } else {
         return [];
       }
+    },
+    getCityName() {
+      return this.data[this.cityValue].city_name;
+    },
+    getTownName() {
+      return this.data[this.cityValue].twon[this.townValue].name;
     }
   },
-  components: {
-    "the-button": TheButton
+  methods: {
+    searhSite() {
+      if (this.townValue === null) {
+        alert("값을 입력하세요");
+        return null;
+      }
+      this.$store
+        .dispatch(STORE.actions.FETCH_MARKERS_AND_GO_MAP, {
+          city: this.getCityName,
+          town: this.getTownName
+        })
+    }
   }
 };
 </script>

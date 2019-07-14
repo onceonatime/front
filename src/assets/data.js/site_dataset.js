@@ -1,4 +1,137 @@
 export default [{
+  city_name: '서울', //type : string
+  city_code: '11', //type : string
+  twon: [{
+      name: '종로구'
+    },
+    {
+      name: '중구'
+    },
+    {
+      name: '용산구'
+    },
+    {
+      name: '성동구'
+    },
+    {
+      name: '광진구'
+    },
+    {
+      name: '동대문구'
+    },
+    {
+      name: '중랑구'
+    },
+    {
+      name: '성북구'
+    },
+    {
+      name: '강북구'
+    },
+    {
+      name: '도봉구'
+    },
+    {
+      name: '노원구'
+    },
+    {
+      name: '은평구'
+    },
+    {
+      name: '서대문구'
+    },
+    {
+      name: '마포구'
+    },
+    {
+      name: '양천구'
+    },
+    {
+      name: '강서구'
+    },
+    {
+      name: '구로구'
+    },
+    {
+      name: '금천구'
+    },
+    {
+      name: '영등포구'
+    },
+    {
+      name: '동작구'
+    },
+    {
+      name: '관악구'
+    },
+    {
+      name: '서초구'
+    },
+    {
+      name: '강남구'
+    },
+    {
+      name: '송파구'
+    },
+    {
+      name: '강동구'
+    }
+
+  ]
+}, {
+  city_name: '부산', //type : string
+  city_code: '21', //type : string
+  twon: [{
+      name: '중구'
+    },
+    {
+      name: '서구'
+    },
+    {
+      name: '동구'
+    },
+    {
+      name: '영도구'
+    },
+    {
+      name: '부산진구'
+    },
+    {
+      name: '동래구'
+    },
+    {
+      name: '남구'
+    },
+    {
+      name: '북구'
+    },
+    {
+      name: '해운대구'
+    },
+    {
+      name: '사하구'
+    },
+    {
+      name: '금정구'
+    },
+    {
+      name: '강서구'
+    },
+    {
+      name: '연제구'
+    },
+    {
+      name: '수영구'
+    },
+    {
+      name: '사상구'
+    },
+    {
+      name: '기장군'
+    }
+
+  ]
+}, {
   city_name: '경기', //type : string
   city_code: '31', //type : string
   twon: [{
@@ -95,6 +228,131 @@ export default [{
       name: '가평군',
     }
   ]
+}, {
+  city_name: '대구', //type : string
+  city_code: '22', //type : string
+  twon: [{
+      name: '중구'
+    },
+    {
+      name: '동구'
+    },
+    {
+      name: '서구'
+    },
+    {
+      name: '남구'
+    },
+    {
+      name: '북구'
+    },
+    {
+      name: '수성구'
+    },
+    {
+      name: '달서구'
+    },
+    {
+      name: '달성군'
+    }
+  ]
+}, {
+  city_name: '인천', //type : string
+  city_code: '23', //type : string
+  twon: [{
+      name: '중구'
+    },
+    {
+      name: '동구'
+    },
+    {
+      name: '미추홀구'
+    },
+    {
+      name: '연수구'
+    },
+    {
+      name: '남동구'
+    },
+    {
+      name: '부평구'
+    },
+    {
+      name: '계양구'
+    },
+    {
+      name: '서구'
+    },
+    {
+      name: '강화군'
+    },
+    {
+      name: '옹진군'
+    }
+  ]
+}, {
+  city_name: '광주', //type : string
+  city_code: '24', //type : string
+  twon: [{
+      name: '광산구'
+    },
+    {
+      name: '동구'
+    },
+    {
+      name: '서구'
+    },
+    {
+      name: '남구'
+    },
+    {
+      name: '북구'
+    }
+  ]
+}, {
+  city_name: '대전', //type : string
+  city_code: '25', //type : string
+  twon: [{
+      name: '동구'
+    },
+    {
+      name: '중구'
+    },
+    {
+      name: '서구'
+    },
+    {
+      name: '유성구'
+    },
+    {
+      name: '대덕구'
+    }
+  ]
+}, {
+  city_name: '울산', //type : string
+  city_code: '26', //type : string
+  twon: [{
+      name: '중구'
+    },
+    {
+      name: '남구'
+    },
+    {
+      name: '동구'
+    },
+    {
+      name: '북구'
+    },
+    {
+      name: '울주군'
+    }
+  ]
+}, {
+  city_name: '세종', //type : string
+  city_code: '45', //type : string
+  twon: [{
+    name: null
+  }]
 }, {
   city_name: '강원', //type : string
   city_code: '32', //type : string

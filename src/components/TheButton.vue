@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "TheButton"
+  name: "TheButton",
 };
 </script>
 
@@ -18,7 +18,7 @@ export default {
   border-radius: 7px;
   background-color: $orange;
   color: #fff;
-  font-size:21px;
+  font-size: 21px;
   font-weight: 500;
 }
 </style>

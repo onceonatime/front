@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import store from './store.js'
 import {
   STORE
-} from './Constant.js'
+} from './assets/data.js/Constant.js'
 
 // view components
 import Main from './views/Main.vue'
@@ -63,7 +63,7 @@ export default new Router({
           name: 'site',
           component: Site,
           beforeEnter(to, from, next) {
-            store.commit(STORE.mutations.SET_HEAD, '시대 검색')
+            store.commit(STORE.mutations.SET_HEAD, '위치 검색')
             next()
           }
         }, {

@@ -8,6 +8,10 @@ Vue.config.productionTip = false
 // detactive
 import VueClosable from 'vue-closable'
 Vue.use(VueClosable)
+
+import Ripple from 'vue-ripple-directive'
+Vue.directive('ripple', Ripple);
+
 // external global component
 import VueGlide from 'vue-glide-js'
 import 'vue-glide-js/dist/vue-glide.css'
