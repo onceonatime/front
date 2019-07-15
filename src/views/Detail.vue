@@ -1,63 +1,87 @@
 <template>
   <div class="Detail">
-    <div class="Detail-Slide glide">
+    <div class="glide Detail-Slide">
       <div class="glide__track" data-glide-el="track">
         <ul class="glide__slides">
-          <li v-for="(img, index) in data.images" :key="'image'+index" class="glide__slide">
+          <li v-for="(img, index) in images" :key="'image'+index" class="glide__slide">
             <div
               class="Detail-Slide-Item"
-              :style="{backgroundImage:getImageUrl(index)}"
+              :style="{backgroundImage:getImageUrl(slideIndex)}"
               @click="toolgeModal"
             ></div>
-            <div class="Detail-Slide-Text">{{img.desc}}</div>
+            <div class="Detail-Slide-Text">{{img.ccimDesc}}</div>
           </li>
         </ul>
       </div>
     </div>
-    <the-modal class="Detail-Modal" name="modal" width="90%" height="70%">
+    <the-modal v-if="images" class="Detail-Modal" name="modal" width="90%" height="70%">
       <div class="Detail-Modal-Item" :style="{backgroundImage:getImageUrl(slideIndex)}"></div>
     </the-modal>
-    <div class="Detail-Head content">
-      <div class="Detail-HeadName">{{data.name}}</div>
-      <div class="Detail-HeadAddress">{{data.address}}</div>
+    <div class="Detail-Head content" v-if="detail">
+      <div class="Detail-HeadName">{{detail.ccbaMnm1}}</div>
+      <div class="Detail-HeadAddress">{{detail.ccbaLcad}}</div>
     </div>
-    <div class="Detail-Desc">{{data.desc}}</div>
+    <div class="Detail-Desc">{{detail.content}}</div>
   </div>
 </template>
 
 <script>
 import Glide from "@glidejs/glide";
-import testSet from "../detail_test";
+// import testSet from "../detail_test";
+import axios from "axios";
 
 export default {
   name: "Detail",
   props: ["id"],
   data() {
     return {
-      data: testSet,
-      slideIndex: 0
+      images: null,
+      detail: null,
+      slideIndex: 0,
+      glide: null
     };
   },
   methods: {
     getImageUrl(index) {
-      return `url(${this.data.images[index].url})`;
+      return `url(${this.images[index].imageUrl})`;
     },
     toolgeModal() {
       this.$modal.show("modal");
     }
   },
+  created() {
+    this.$nextTick(() => {
+      axios
+        .get("http://outback-dev.us-west-2.elasticbeanstalk.com/detail/", {
+          params: { ccbaKdcd: 11, ccbaAsno: "00030000", ccbaCtcd: 11 }
+        })
+        .then(res => {
+          console.log(res.data);
+          this.detail = res.data;
+        });
+      axios
+        .get("http://outback-dev.us-west-2.elasticbeanstalk.com/images/", {
+          params: { ccbaKdcd: 11, ccbaAsno: "00030000", ccbaCtcd: 11 }
+        })
+        .then(res => {
+          console.log(res.data);
+          this.images = res.data;
+        });
+    });
+  },
   mounted() {
-    const glide = new Glide(".glide", {
+    this.glide = new Glide(".glide", {
       peek: {
         before: 20,
         after: 20
       }
     });
-    glide.mount();
-    glide.on("run", res => {
-      this.slideIndex = glide.index;
-    });
-  }
+    // this.glide.on("run", res => {
+    //   this.slideIndex = this.glide.index;
+    // });
+    this.glide.mount();
+  },
+  updated() {}
 };
 </script>
 
@@ -114,11 +138,11 @@ export default {
   &-Desc {
     height: calc(100% - 430px);
     overflow-y: scroll;
-    width:85%;
-    margin:auto;
+    width: 85%;
+    margin: auto;
     margin-top: 27px;
     &::-webkit-scrollbar {
-      width:2px;
+      width: 2px;
       background-color: rgba(121, 121, 121, 0.383);
     }
     &::-webkit-scrollbar-thumb {

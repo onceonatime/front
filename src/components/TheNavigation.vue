@@ -51,6 +51,7 @@ export default {
   padding: 17.5px 14px;
   width: calc(100% - 28px);
   max-width: 772px;
+  z-index: 10;
   &-Back {
     width: 28px;
     position: absolute;

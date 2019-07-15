@@ -1,13 +1,8 @@
 <template>
   <div class="Maps">
-    <div id="map"></div>
-    <!-- <button @click="testClick">서울 중구</button> -->
-    <button class="Maps-Current" @click="findRelic">지도에서 유적지 찾기</button>
-    <vue-daum-postcode
-      class="Maps-Search"
-      :class="{active:onSearchBar}"
-    />
-    <!-- <div>{{ result }}</div> -->
+    <div id="map">
+      <button class="Maps-Current" @click="findRelic">지도에서 유적지 찾기</button>
+    </div>
   </div>
 </template>
 
@@ -22,7 +17,9 @@ export default {
       container: null,
       options: null,
       map: null,
-      bounds: null
+      bounds: null,
+      postcode: null,
+      geocoder: null
     };
   },
   computed: {
@@ -37,9 +34,6 @@ export default {
     }
   },
   methods: {
-    testClick() {
-      this.$store.dispatch("fetchMarker", { city: "서울", town: "중구" });
-    },
     findRelic() {
       const center = this.map.getCenter();
       const bounds = this.map.getBounds();
@@ -55,9 +49,9 @@ export default {
     },
     drawMarker() {
       const marker = this.markers;
-      if (marker !== null || marker.length >= 2) {
-        // return alert("데이터에 있는 유적지가 없습니다.");
-
+      if (marker === null) {
+        return alert("데이터에 있는 유적지가 없습니다.");
+      } else {
         this.bounds = new kakao.maps.LatLngBounds();
 
         marker.forEach(element => {
@@ -67,10 +61,31 @@ export default {
               element.longitude
             );
             // console.log(position);
-            new kakao.maps.Marker({
+            const marker = new kakao.maps.Marker({
               map: this.map,
               position: position,
               title: element.ccbaMnm1
+              // clickable: true
+            });
+
+            const iwContent = `
+                <div style="padding:10px;font-size:12px;">
+                  <a href="detail/5">
+                    ${element.ccbaMnm1}
+                  </a>
+                </div>
+              `, // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+              iwRemoveable = true; // removeable 속성을 ture 로 설정하면 인포윈도우를 닫을 수 있는 x버튼이 표시됩니다
+
+            // 인포윈도우를 생성합니다
+            const infowindow = new kakao.maps.InfoWindow({
+              content: iwContent,
+              removable: iwRemoveable
+            });
+
+            kakao.maps.event.addListener(marker, "click", () => {
+              // 마커 위에 인포윈도우를 표시합니다
+              infowindow.open(this.map, marker);
             });
             this.bounds.extend(position);
           }
@@ -89,8 +104,10 @@ export default {
     this.map = new kakao.maps.Map(this.container, this.options); //지도 생성 및 객체 리턴
     this.bounds = new kakao.maps.LatLngBounds();
     this.drawMarker();
-    const postHead = document.getElementsByClassName('post-head')[0]
-    postHead.addEventListener('click',this.onSearchBar=true)
+    // const postHead = document.getElementsByClassName("post-head")[0];
+    // postHead.addEventListener("click", (this.onSearchBar = true));
+
+    this.postcode = document.getElementById("postcode");
   }
 };
 </script>
@@ -99,18 +116,16 @@ export default {
 @import "@/assets/css/index.scss";
 #map {
   width: 100%;
-  height: 65%;
+  height: 100%;
 }
 .Maps {
-  &-Current{
+  // height: 100%;
+  background-color: yellow;
+  &-Current {
     position: absolute;
-    top:0;
-    right:0;
-    z-index: 1;
-  }
-  &-Search {
-    height: 45%;
-    overflow:scroll;
+    top: 0;
+    right: 0;
+    z-index: 2;
   }
 }
 </style>
